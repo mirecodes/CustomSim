@@ -8,7 +8,7 @@
     ros2 topic echo /model/diff_drive/odometry
 -->
 <sdf version="1.8">
-  <world name="demo">
+  <world name="zephyr">
     <plugin
       filename="ignition-gazebo-physics-system"
       name="ignition::gazebo::systems::Physics">
@@ -76,11 +76,11 @@
       </link>
     </model>
 
-    <model name="diff_drive">
+    <model name="zephyr">
       <self_collide>true</self_collide>
       <pose>0 0 0.35 0 0 0</pose>
       <include merge="true">
-        <uri>package://ros_gz_example_description/models/diff_drive</uri>
+        <uri>package://ros_gz_example_description/models/zephyr</uri>
       </include>
 
       <plugin
@@ -100,8 +100,8 @@
       <plugin
         filename="ignition-gazebo-odometry-publisher-system"
         name="ignition::gazebo::systems::OdometryPublisher">
-        <odom_frame>diff_drive/odom</odom_frame>
-        <robot_base_frame>diff_drive</robot_base_frame>
+        <odom_frame>zephyr/odom</odom_frame>
+        <robot_base_frame>zephyr</robot_base_frame>
       </plugin>
     </model>
 
