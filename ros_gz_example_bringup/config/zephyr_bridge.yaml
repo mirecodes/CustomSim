@@ -1,12 +1,12 @@
 ---
-- ros_topic_name: "/flap_pos/flap_left/cmd_vel"
-  gz_topic_name: "/flap_pos/flap_left/cmd_vel"
-  ros_type_name: "geometry_msgs/msg/Double"
+- ros_topic_name: "/flap_pos/flap_left/cmd_pos"
+  gz_topic_name: "/flap_pos/flap_left/cmd_pos"
+  ros_type_name: "std_msgs/msg/Float64"
   gz_type_name: "gz.msgs.Double"
   direction: ROS_TO_GZ
-- ros_topic_name: "/flap_pos/flap_right/cmd_vel"
-  gz_topic_name: "/flap_pos/flap_right/cmd_vel"
-  ros_type_name: "geometry_msgs/msg/Double"
+- ros_topic_name: "/flap_pos/flap_right/cmd_pos"
+  gz_topic_name: "/flap_pos/flap_right/cmd_pos"
+  ros_type_name: "std_msgs/msg/Float64"
   gz_type_name: "gz.msgs.Double"
   direction: ROS_TO_GZ
 - ros_topic_name: "/clock"

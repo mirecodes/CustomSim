@@ -24,7 +24,7 @@
       <topic>/flap_pos/flap_right/cmd_pos</topic>
     </plugin>
 
-    <!-- <plugin 
+    <plugin 
        filename="libignition-gazebo-lift-drag-system.so"
        name="ignition::gazebo::systems::LiftDrag">
       <a0>0.13</a0>
@@ -41,7 +41,7 @@
       <forward>0 -1 0</forward>
       <upward>0 0 1</upward>
       <link_name>wing</link_name>
-    </plugin> -->
+    </plugin>
 
     <!-- <plugin name="left_wing" filename="libLiftDragPlugin.so">
       <a0>0.15</a0>
