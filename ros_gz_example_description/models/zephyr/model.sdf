@@ -4,7 +4,7 @@
 
     <!-- Joint Position Controller for Left Flap -->
     <plugin 
-    filename="libignition-gazebo-joint-controller-system.so"
+    filename="ignition-gazebo-joint-position-controller-system"
     name="ignition::gazebo::systems::JointPositionController">
       <joint_name>flap_left_joint</joint_name>
       <p_gain>1</p_gain>
@@ -15,7 +15,7 @@
 
     <!-- Joint Position Controller for Right Flap -->
     <plugin 
-    filename="libignition-gazebo-joint-controller-system.so"
+    filename="ignition-gazebo-joint-position-controller-system"
     name="ignition::gazebo::systems::JointPositionController">
       <joint_name>flap_right_joint</joint_name>
       <p_gain>1</p_gain>
@@ -24,7 +24,7 @@
       <topic>/flap_pos/flap_right/cmd_pos</topic>
     </plugin>
 
-    <plugin 
+    <!-- <plugin 
        filename="libignition-gazebo-lift-drag-system.so"
        name="ignition::gazebo::systems::LiftDrag">
       <a0>0.13</a0>
@@ -41,7 +41,8 @@
       <forward>0 -1 0</forward>
       <upward>0 0 1</upward>
       <link_name>wing</link_name>
-    </plugin>
+    </plugin> -->
+
     <!-- <plugin name="left_wing" filename="libLiftDragPlugin.so">
       <a0>0.15</a0>
       <cla>6.8</cla>
@@ -245,9 +246,10 @@
       </visual>
       -->
       <sensor name="gps_sensor" type="gps">
-        <pose>0 0 0  0 0 0</pose>
-        <update_rate>10.0</update_rate>
-        <always_on>true</always_on>
+        <pose>0 0 0 0 0 0</pose>
+        <topic>gps</topic>
+        <ignition_frame_id>zephyr/lidar_link</ignition_frame_id>
+        <update_rate>10</update_rate>
         <gps>
           <position_sensing>
             <horizontal>
