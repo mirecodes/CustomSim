@@ -2,12 +2,31 @@
 <sdf version="1.8">
   <model name="zephyr">
 
-    <!-- <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
-      <robotNamespace>/zephyr_delta_wing</robotNamespace>
-      <control_period>0.01</control_period>
-      <robotParam>robot_description</robotParam>
+    <!-- Joint Position Controller for Left Flap -->
+    <plugin 
+    filename="libignition-gazebo-joint-controller-system.so"
+    name="ignition::gazebo::systems::JointPositionController">
+      <joint_name>flap_left_joint</joint_name>
+      <p_gain>1</p_gain>
+      <d_gain>0.01</d_gain>
+      <i_gain>0</i_gain>
+      <topic>/flap_pos/flap_left/cmd_pos</topic>
     </plugin>
-       <plugin name="invisible_canard" filename="libLiftDragPlugin.so">
+
+    <!-- Joint Position Controller for Right Flap -->
+    <plugin 
+    filename="libignition-gazebo-joint-controller-system.so"
+    name="ignition::gazebo::systems::JointPositionController">
+      <joint_name>flap_right_joint</joint_name>
+      <p_gain>1</p_gain>
+      <d_gain>0.01</d_gain>
+      <i_gain>0</i_gain>
+      <topic>/flap_pos/flap_right/cmd_pos</topic>
+    </plugin>
+
+    <plugin 
+       filename="libignition-gazebo-lift-drag-system.so"
+       name="ignition::gazebo::systems::LiftDrag">
       <a0>0.13</a0>
       <cla>3.7</cla>
       <cda>0.06417112299</cda>
@@ -23,7 +42,7 @@
       <upward>0 0 1</upward>
       <link_name>wing</link_name>
     </plugin>
-    <plugin name="left_wing" filename="libLiftDragPlugin.so">
+    <!-- <plugin name="left_wing" filename="libLiftDragPlugin.so">
       <a0>0.15</a0>
       <cla>6.8</cla>
       <cda>0.06417112299</cda>
@@ -127,7 +146,6 @@
       <upward>0 -1 0</upward>
       <link_name>propeller</link_name>
     </plugin> -->
-
 
     <pose>0 0 0.02577 0 0 0</pose>
 
@@ -289,7 +307,7 @@
           <izz>0.000003187</izz>
         </inertia>
       </inertial>
-      <visual name="visual">
+      <visual name="propeller_visual">
         <geometry>
           <mesh>
             <!--<uri>model://zephyr/meshes/wing.dae</uri>-->
@@ -301,7 +319,7 @@
           </mesh>
         </geometry>
       </visual>
-      <collision name="blade1">
+      <collision name="blade1_collision">
         <pose>0 0 0.074205 0 0  0.3</pose>
         <geometry>
           <box>
@@ -309,7 +327,7 @@
           </box>
         </geometry>
       </collision>
-      <collision name="blade2">
+      <collision name="blade2_collision">
         <pose>0 0 -0.074205 0 0  -0.3</pose>
         <geometry>
           <box>
@@ -351,7 +369,7 @@
           <izz>0.003446072</izz>
         </inertia>
       </inertial>
-      <visual name="visual">
+      <visual name="flat_left_visual">
         <geometry>
           <mesh>
             <!--<uri>model://zephyr/meshes/wing.dae</uri>-->
@@ -363,7 +381,7 @@
           </mesh>
         </geometry>
       </visual>
-      <collision name="collision">
+      <collision name="flap_left_collision">
         <pose>-0.01 0.01 0 0 0 0.32445671</pose>
         <geometry>
           <box>
@@ -387,7 +405,7 @@
           <izz>0.003446072</izz>
         </inertia>
       </inertial>
-      <visual name="visual">
+      <visual name="flap_right_visual">
         <geometry>
           <mesh>
             <!--<uri>model://zephyr/meshes/wing.dae</uri>-->
@@ -399,7 +417,7 @@
           </mesh>
         </geometry>
       </visual>
-      <collision name="collision">
+      <collision name="flap_right_collision">
         <pose>0.01 0.01 0 0 0 -0.32445671</pose>
         <geometry>
           <box>
